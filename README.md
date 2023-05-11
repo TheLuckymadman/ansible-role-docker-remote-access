@@ -1,7 +1,7 @@
 Role Name
 =========
 
-The role is used for setting the remote access up for the docker daemon.
+The role is used for setting the remote access up for a docker daemon.
 
 Requirements
 ------------
