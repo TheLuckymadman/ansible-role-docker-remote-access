@@ -1,0 +1,5 @@
+---
+ca_crt_path: "files/ca.crt"
+server_cert_path: "files/server.crt"
+server_key_path: "files/server.key"
+cert_dest_dir: "/etc/docker/pki"

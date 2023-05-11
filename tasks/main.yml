@@ -1,0 +1,41 @@
+---
+- name: Create the directory for keeping certs
+  file:
+    path: '{{ cert_dest_dir }}'
+    state: directory
+    mode: '0755'
+  
+- name: Upload CA cert
+  copy:
+    src: '{{ ca_crt_path }}'
+    dest: '{{ cert_dest_dir }}/ca.crt'
+    mode: '0400'
+
+- name: Upload server certs
+  copy:
+    src: '{{ server_cert_path }}'
+    dest: '{{ cert_dest_dir }}/server.crt'
+    mode: '0400'
+
+- name: Upload server key
+  copy:
+    src: '{{ server_key_path }}'
+    dest: '{{ cert_dest_dir }}/server.key'
+    mode: '0400'
+
+- name: Add systemd override config for docker daemon
+  copy:
+    src: files/docker.service
+    dest: /etc/systemd/system
+
+- name: Add the custom docker daemon config to enable remote access  
+  template:
+    src: daemon.json.j2
+    dest: /etc/docker/daemon.json
+
+- name: Just force systemd to reread configs (2.4 and above)
+  ansible.builtin.systemd:
+    daemon_reload: true
+  notify: "restart docker"
+  
+  

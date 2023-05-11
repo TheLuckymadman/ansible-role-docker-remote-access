@@ -1,0 +1,11 @@
+{
+  "icc": false,
+  "tls": true,
+  "tlsverify": true,
+  "tlscacert": "{{ cert_dest_dir }}/ca.crt",
+  "tlscert": "{{ cert_dest_dir }}/server.crt",
+  "tlskey": "{{ cert_dest_dir }}/server.key",
+  "userland-proxy": false,
+  "default-ulimit": "nofile=50:100",
+  "hosts": ["unix:///var/run/docker.sock", "tcp://0.0.0.0:2376"]
+}
