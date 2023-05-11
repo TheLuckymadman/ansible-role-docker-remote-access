@@ -6,7 +6,7 @@ The role is used for setting the remote access up for a docker daemon.
 Requirements
 ------------
 
-1. Need docker daemon installed with no custom systemd daemon settings because they will be overridden. 
+1. You need a docker daemon installed with no custom systemd daemon settings because they will be overridden. 
    If you have custom systemd daemon settings, I should add them to ./file/docker.service file. 
 2. You should prepare certificates to set up remote access by using this role. 
    You can use the official docs to prepare the certificates: https://docs.docker.com/engine/security/protect-access/
